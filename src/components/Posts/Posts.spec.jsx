@@ -29,9 +29,20 @@ describe('<Posts />', () => {
     it('should render posts', () => {
         render(<Posts {...props} />);
 
+        // Verifica se tem 3 ocorrências em que se tem heading com conteúdo title
         expect(screen.getAllByRole('heading', { name: /title/i })).toHaveLength(3);
+        // Verifica se tem 3 ocorrências em que se tem img com conteúdo title
         expect(screen.getAllByRole('img', { name: /title/i })).toHaveLength(3);
+        // Verifica se tem 3 ocorrências em que se tem texto body
         expect(screen.getAllByText(/body/i)).toHaveLength(3);
+    });
+
+    it('should not render posts', () => {
+        render(<Posts/>);
+        
+        // Valida se não existem ocorrências de headings com conteúdo /title/, caso não tenha, significa que a lista de posts está vazia
+        expect(screen.queryByRole('heading', { name: /title/i }))
+            .not.toBeInTheDocument();
     });
 
     it('should match snapshot', () => {

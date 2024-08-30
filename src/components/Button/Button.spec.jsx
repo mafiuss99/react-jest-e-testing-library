@@ -9,6 +9,8 @@ describe('<Button />', () => {
     expect.assertions(1);
 
     const button = screen.getByRole('button', { name: /load more/i });
+
+    // Espera que o Elemento Button com text "Load more" esteja no documento.
     expect(button).toBeInTheDocument();
   });
 
@@ -17,22 +19,26 @@ describe('<Button />', () => {
     render(<Button text="load more" onclick={fn}/>);
 
     const button = screen.getByRole('button', { name: /load more/i });
-
     
     userEvent.click(button);
 
+    // Espera que a função atribuída ao botão com text "Load More" tenha sido chamada apenas 1 vez quando o botão foi clicado.
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
   it('should be disabled when disabled is true', () => {
     render(<Button text="load more" disabled={true}/>);
     const button = screen.getByRole('button', { name: /load more/i });
+
+    // Espera que o button esteja desabilitado.
     expect(button).toBeDisabled();
   });
 
   it('should be enabled when disabled is false', () => {
     render(<Button text="load more" disabled={false}/>);
     const button = screen.getByRole('button', { name: /load more/i });
+
+    // Espera que o button esteja habilitado.
     expect(button).toBeEnabled();
   });
 });
