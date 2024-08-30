@@ -1,5 +1,6 @@
 import { PostCard } from "../PostCard";
 import P from "prop-types";
+import "./styles.css";
 
 export const Posts = ({ posts = [] }) => (
   <div className="posts">

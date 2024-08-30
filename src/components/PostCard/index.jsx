@@ -2,7 +2,7 @@ import "./styles.css";
 import P from "prop-types";
 
 export const PostCard = ({ cover, title, id, body }) => (
-  <div className="post">
+  <div className="postCard">
     <img src={cover} alt={title} />
     <div className="post-content">
       <h2>
